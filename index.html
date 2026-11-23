@@ -45,6 +45,10 @@
     .eyebrow { color: var(--lime); font-size: 11px; font-weight: 700; letter-spacing: 1.8px; text-transform: uppercase; }
     h1 { margin: 8px 0 0; font: 700 clamp(38px, 5vw, 56px)/.95 var(--mono); text-transform: uppercase; }
     .intro-copy { margin: 12px 0 0; color: var(--muted); font-size: 13px; }
+    .league-stats { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; margin-bottom: 20px; }
+    .stat-card { min-height: 84px; padding: 15px 17px; background: rgba(26,33,26,.94); border: 1px solid var(--line); border-radius: 6px; }
+    .stat-value { display: block; color: var(--lime); font: 700 29px/.95 var(--mono); font-variant-numeric: tabular-nums; }
+    .stat-label { display: block; margin-top: 8px; color: var(--muted); font-size: 10px; letter-spacing: 1px; text-transform: uppercase; }
     .content { display: grid; gap: 18px; }
     .panel { overflow: hidden; background: rgba(26,33,26,.94); border: 1px solid var(--line); border-radius: 6px; }
     .panel-head { min-height: 62px; display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 15px 18px; border-bottom: 1px solid var(--line); }
@@ -71,14 +75,20 @@
     .form-empty { color: var(--muted); }
     .table-foot { display: flex; justify-content: space-between; gap: 12px; padding: 11px 16px; color: var(--muted); border-top: 1px solid var(--line); font-size: 10px; }
     .fixture-list { display: grid; }
+    .round-block + .round-block { border-top: 1px solid var(--line); }
     .round-heading { display: flex; justify-content: space-between; align-items: center; padding: 11px 18px; color: var(--lime); background: rgba(195,245,106,.045); border-bottom: 1px solid var(--line); font: 700 14px var(--mono); text-transform: uppercase; }
     .round-heading small { color: var(--muted); font: 500 10px var(--body); text-transform: none; }
-    .fixture { min-height: 68px; display: grid; grid-template-columns: minmax(0,1fr) 100px minmax(0,1fr); gap: 12px; align-items: center; padding: 11px 18px; border-bottom: 1px solid rgba(255,255,255,.055); }
-    .fixture:last-child { border-bottom: 0; }
-    .fixture-team { min-width: 0; font-size: 12px; font-weight: 600; overflow-wrap: anywhere; }
+    .fixture-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 10px; padding: 12px; }
+    .fixture { min-height: 88px; display: grid; grid-template-columns: minmax(0,1fr) 58px minmax(0,1fr); gap: 8px; align-items: center; padding: 12px; background: rgba(255,255,255,.025); border: 1px solid rgba(255,255,255,.07); border-radius: 5px; }
+    .fixture.played { background: rgba(195,245,106,.075); border-color: rgba(195,245,106,.34); box-shadow: inset 3px 0 0 rgba(195,245,106,.65); }
+    .fixture-side { min-width: 0; }
+    .fixture-side.away { text-align: right; }
+    .fixture-role { display: block; margin-bottom: 5px; color: var(--muted); font-size: 8px; font-weight: 700; letter-spacing: .8px; text-transform: uppercase; }
+    .fixture-team { display: block; min-width: 0; font-size: 11px; font-weight: 600; line-height: 1.35; overflow-wrap: anywhere; }
     .fixture-team.away { text-align: right; }
-    .score { display: flex; align-items: center; justify-content: center; gap: 8px; font: 700 22px var(--mono); font-variant-numeric: tabular-nums; }
-    .score.unplayed { color: #788174; font-size: 11px; }
+    .score { display: flex; min-height: 34px; align-items: center; justify-content: center; gap: 5px; color: var(--ink); background: #111711; border: 1px solid #394336; border-radius: 4px; font: 700 20px var(--mono); font-variant-numeric: tabular-nums; }
+    .fixture.played .score { color: var(--lime); background: rgba(195,245,106,.1); border-color: rgba(195,245,106,.38); }
+    .score.unplayed { color: #788174; font-size: 10px; }
     .empty-state, .load-error { padding: 34px 20px; text-align: center; }
     .empty-state h3, .load-error h3 { margin: 0; font: 700 20px var(--mono); text-transform: uppercase; }
     .empty-state p, .load-error p { max-width: 520px; margin: 7px auto 0; color: var(--muted); font-size: 12px; line-height: 1.6; }
@@ -90,13 +100,15 @@
       .brand-mark { width: 30px; height: 30px; }
       .data-status { max-width: 44%; font-size: 10px; }
       .intro { padding: 27px 0 20px; }
+      .league-stats { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; margin-bottom: 15px; }
+      .stat-card { min-height: 72px; padding: 12px; }
+      .stat-value { font-size: 25px; }
       .panel-head { padding: 13px 14px; }
       .standings th:first-child, .standings td:first-child { padding-left: 10px; }
       .standings th:last-child, .standings td:last-child { padding-right: 10px; }
       .standings td { padding-right: 5px; padding-left: 5px; }
-      .fixture { grid-template-columns: minmax(0,1fr) 76px minmax(0,1fr); gap: 6px; padding: 11px; }
-      .fixture-team { font-size: 11px; }
-      .score { gap: 5px; }
+      .fixture-grid { grid-template-columns: 1fr; gap: 8px; padding: 10px; }
+      .fixture { grid-template-columns: minmax(0,1fr) 58px minmax(0,1fr); gap: 7px; padding: 11px; }
       .table-foot { font-size: 9px; }
     }
     @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; } }
@@ -116,6 +128,13 @@
       <div class="eyebrow">Informasi liga</div>
       <h1 id="page-title">Klasemen &amp; Jadwal</h1>
       <p class="intro-copy" id="league-caption">Data liga ditampilkan hanya untuk dibaca.</p>
+    </section>
+
+    <section class="league-stats" aria-label="Ringkasan liga">
+      <div class="stat-card"><span class="stat-value" id="stat-teams">—</span><span class="stat-label">Jumlah tim</span></div>
+      <div class="stat-card"><span class="stat-value" id="stat-played">—</span><span class="stat-label">Sudah dimainkan</span></div>
+      <div class="stat-card"><span class="stat-value" id="stat-total">—</span><span class="stat-label">Total laga</span></div>
+      <div class="stat-card"><span class="stat-value" id="stat-pending">—</span><span class="stat-label">Belum dimainkan</span></div>
     </section>
 
     <main class="content">
@@ -218,6 +237,14 @@
           <tr><td class="rank ${index === 0 && row.points > 0 ? 'top' : ''}">${String(index + 1).padStart(2, '0')}</td><td title="${escapeHTML(row.team)}">${escapeHTML(row.team)}</td><td>${row.played}</td><td>${row.wins}</td><td>${row.draws}</td><td>${row.losses}</td><td>${row.gf}</td><td>${row.ga}</td><td>${row.gf - row.ga > 0 ? '+' : ''}${row.gf - row.ga}</td><td class="points">${row.points}</td><td><div class="form-results" aria-label="Semua hasil pertandingan">${allResults(data, row.team).map((item) => `<span class="form-badge form-${item.result}" title="${item.label}" aria-label="${item.label}">${item.mark}</span>`).join('') || '<span class="form-empty">-</span>'}</div></td></tr>`).join('')}</tbody></table>`;
       }
 
+      function renderSummary(data) {
+        const completed = playedMatches(data).length;
+        byId('stat-teams').textContent = data.teams.length;
+        byId('stat-played').textContent = completed;
+        byId('stat-total').textContent = data.matches.length;
+        byId('stat-pending').textContent = data.matches.length - completed;
+      }
+
       function renderFixtures(data) {
         const done = playedMatches(data).length;
         byId('fixture-summary').textContent = data.matches.length
@@ -232,10 +259,10 @@
         area.innerHTML = `<div class="fixture-list">${rounds.map((round) => {
           const matches = data.matches.filter((match) => match.round === round);
           const completed = matches.filter((match) => Number.isInteger(match.homeScore) && Number.isInteger(match.awayScore)).length;
-          return `<section aria-label="Pekan ${round}"><div class="round-heading"><span>Pekan ${round}</span><small>${completed}/${matches.length} selesai</small></div>${matches.map((match) => {
+          return `<section class="round-block" aria-label="Pekan ${round}"><div class="round-heading"><span>Pekan ${round}</span><small>${completed}/${matches.length} selesai</small></div><div class="fixture-grid">${matches.map((match) => {
             const played = Number.isInteger(match.homeScore) && Number.isInteger(match.awayScore);
-            return `<div class="fixture"><div class="fixture-team">${escapeHTML(match.home)}</div><div class="score ${played ? '' : 'unplayed'}">${played ? `${match.homeScore}<span>:</span>${match.awayScore}` : 'VS'}</div><div class="fixture-team away">${escapeHTML(match.away)}</div></div>`;
-          }).join('')}</section>`;
+            return `<article class="fixture ${played ? 'played' : ''}"><div class="fixture-side"><span class="fixture-role">Kandang</span><span class="fixture-team">${escapeHTML(match.home)}</span></div><div class="score ${played ? '' : 'unplayed'}">${played ? `${match.homeScore}<span>:</span>${match.awayScore}` : 'VS'}</div><div class="fixture-side away"><span class="fixture-role">Tandang</span><span class="fixture-team">${escapeHTML(match.away)}</span></div></article>`;
+          }).join('')}</div></section>`;
         }).join('')}</div>`;
       }
 
@@ -254,6 +281,7 @@
           const response = await fetch(DATA_URL, { cache: 'no-store' });
           if (!response.ok) throw new Error(`data.json tidak dapat dibaca (HTTP ${response.status}).`);
           const data = getLeagueData(await response.json());
+          renderSummary(data);
           renderStandings(data);
           renderFixtures(data);
           byId('brand-caption').textContent = `${data.leagueName || 'FC 26 LIGA'}`.toLocaleUpperCase('id');
