@@ -310,8 +310,9 @@
         "round": 9,
         "home": "Kenny (Manchester City)",
         "away": "Darrell (Brighton)",
-        "homeScore": null,
-        "awayScore": null
+        "homeScore": 4,
+        "awayScore": 4,
+        "playedAt": 1795615989498
       },
       {
         "id": "1795497470700-2-6-n9rk8",
