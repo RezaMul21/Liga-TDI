@@ -105,8 +105,9 @@
         "round": 3,
         "home": "Darrell (Brighton)",
         "away": "Chiko (Real Madrid)",
-        "homeScore": null,
-        "awayScore": null
+        "homeScore": 2,
+        "awayScore": 2,
+        "playedAt": 1795599031781
       },
       {
         "id": "1795429111793-3-3-j7zvx",
@@ -344,8 +345,9 @@
         "round": 10,
         "home": "Chiko (Real Madrid)",
         "away": "Darrell (Brighton)",
-        "homeScore": null,
-        "awayScore": null
+        "homeScore": 4,
+        "awayScore": 7,
+        "playedAt": 1795599062946
       },
       {
         "id": "1795497470700-3-11-s7ilx",
