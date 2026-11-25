@@ -499,8 +499,9 @@
         "round": 14,
         "home": "Fahmi (Bayern Munchen)",
         "away": "Kenny (Manchester City)",
-        "homeScore": null,
-        "awayScore": null
+        "homeScore": 3,
+        "awayScore": 6,
+        "playedAt": 1795613985430
       }
     ],
     "doubleRound": true
