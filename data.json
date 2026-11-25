@@ -132,8 +132,9 @@
         "round": 4,
         "home": "Kenny (Manchester City)",
         "away": "Chiko (Real Madrid)",
-        "homeScore": null,
-        "awayScore": null
+        "homeScore": 5,
+        "awayScore": 2,
+        "playedAt": 1795601878265
       },
       {
         "id": "1795429111794-4-2-ay3cl",
@@ -158,8 +159,9 @@
         "round": 5,
         "home": "Reza (PSG)",
         "away": "Chiko (Real Madrid)",
-        "homeScore": null,
-        "awayScore": null
+        "homeScore": 2,
+        "awayScore": 2,
+        "playedAt": 1795603698832
       },
       {
         "id": "1795429111794-5-1-ls9v1",
@@ -246,8 +248,9 @@
         "round": 7,
         "home": "Chiko (Real Madrid)",
         "away": "Valentino (Dortmund)",
-        "homeScore": null,
-        "awayScore": null
+        "homeScore": 5,
+        "awayScore": 4,
+        "playedAt": 1795602823605
       },
       {
         "id": "1795429111794-7-3-p68n7",
