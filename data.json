@@ -97,8 +97,9 @@
         "round": 3,
         "home": "Fahmi (Bayern Munchen)",
         "away": "Valentino (Dortmund)",
-        "homeScore": null,
-        "awayScore": null
+        "homeScore": 9,
+        "awayScore": 1,
+        "playedAt": 1795608027941
       },
       {
         "id": "1795429111793-3-2-79mpn",
@@ -299,8 +300,9 @@
         "round": 9,
         "home": "Reza (PSG)",
         "away": "Valentino (Dortmund)",
-        "homeScore": null,
-        "awayScore": null
+        "homeScore": 8,
+        "awayScore": 3,
+        "playedAt": 1795609073944
       },
       {
         "id": "1795497470700-2-5-3wnut",
@@ -315,16 +317,18 @@
         "round": 9,
         "home": "Wildan (Barcelona)",
         "away": "Fahmi (Bayern Munchen)",
-        "homeScore": null,
-        "awayScore": null
+        "homeScore": 2,
+        "awayScore": 1,
+        "playedAt": 1795613054133
       },
       {
         "id": "1795497470700-2-7-jn2kp",
         "round": 9,
         "home": "Chiko (Real Madrid)",
         "away": "Insan (Arsenal)",
-        "homeScore": null,
-        "awayScore": null
+        "homeScore": 2,
+        "awayScore": 2,
+        "playedAt": 1795604640054
       },
       {
         "id": "1795497470700-3-8-m6cq7",
@@ -400,8 +404,9 @@
         "round": 12,
         "home": "Chiko (Real Madrid)",
         "away": "Reza (PSG)",
-        "homeScore": null,
-        "awayScore": null
+        "homeScore": 3,
+        "awayScore": 4,
+        "playedAt": 1795606981428
       },
       {
         "id": "1795497470700-5-17-lb0a6",
@@ -485,8 +490,9 @@
         "round": 14,
         "home": "Valentino (Dortmund)",
         "away": "Chiko (Real Madrid)",
-        "homeScore": null,
-        "awayScore": null
+        "homeScore": 2,
+        "awayScore": 5,
+        "playedAt": 1795605924619
       },
       {
         "id": "1795497470700-7-27-xuscd",
