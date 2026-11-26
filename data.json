@@ -467,8 +467,9 @@
         "round": 13,
         "home": "Valentino (Dortmund)",
         "away": "Kenny (Manchester City)",
-        "homeScore": null,
-        "awayScore": null
+        "homeScore": 3,
+        "awayScore": 1,
+        "playedAt": 1795681499939
       },
       {
         "id": "1795497470700-7-24-wbaot",
