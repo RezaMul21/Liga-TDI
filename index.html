@@ -38,38 +38,55 @@
 
     button, input, select { font: inherit; }
     button { cursor: pointer; }
-    .shell { max-width: 1480px; margin: 0 auto; padding: 0 42px 60px; }
-    .topbar { min-height: 74px; padding: 12px 0; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px; border-bottom: 1px solid var(--line); }
+
+    /* Shell mengikuti lebar penonton jika bukan admin, atau melebar jika admin */
+    .shell { max-width: 1180px; margin: 0 auto; padding: 0 32px 48px; }
+    body.is-admin .shell { max-width: 1480px; padding: 0 42px 60px; }
+
+    /* Topbar & Switcher */
+    .topbar { min-height: 74px; padding: 12px 0; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 14px; border-bottom: 1px solid var(--line); }
     .brand { display: flex; align-items: center; gap: 12px; color: var(--ink); text-decoration: none; }
-    .brand-mark { display: grid; width: 34px; height: 34px; place-items: center; background: var(--lime); color: var(--lime-ink); font-family: var(--mono); font-weight: 800; font-size: 17px; transform: skew(-7deg); }
-    .brand-name { font-family: var(--mono); text-transform: uppercase; font-weight: 700; font-size: 18px; letter-spacing: 0; line-height: 1; }
-    .brand-name small { display: block; color: var(--muted); font: 600 10px var(--body); letter-spacing: 1.4px; margin-top: 5px; }
+    .brand-mark { display: grid; width: 34px; height: 34px; place-items: center; background: var(--lime); color: var(--lime-ink); font: 800 17px var(--mono); transform: skew(-7deg); }
+    .brand-name { font: 700 18px/1 var(--mono); text-transform: uppercase; }
+    .brand-name small { display: block; margin-top: 5px; color: var(--muted); font: 600 10px var(--body); letter-spacing: 1.4px; }
     .tournament-switcher { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
-    .tournament-select { height: 36px; min-width: 180px; max-width: 260px; padding: 0 28px 0 12px; color: var(--lime); background: #1a211a; border: 1px solid #475044; border-radius: 4px; font-weight: 700; font-size: 13px; outline: none; }
+    .tournament-select { height: 36px; min-width: 185px; max-width: 260px; padding: 0 28px 0 12px; color: var(--lime); background: #1a211a; border: 1px solid #475044; border-radius: 4px; font-weight: 700; font-size: 13px; outline: none; }
     .tournament-select:focus { border-color: var(--lime); }
-    .save-controls { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
-    .save-status { display: flex; align-items: center; gap: 9px; color: var(--muted); font-size: 11px; font-weight: 700; letter-spacing: .6px; margin-right: 4px; }
-    .live-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--lime); box-shadow: 0 0 12px rgba(195,245,106,.55); }
-    .intro { padding: 38px 0 28px; display: flex; justify-content: space-between; align-items: flex-end; gap: 24px; animation: rise .45s ease both; }
-    .eyebrow { color: var(--lime); font-size: 11px; letter-spacing: 1.8px; text-transform: uppercase; font-weight: 700; }
-    h1 { margin: 8px 0 0; font: 700 clamp(38px, 5vw, 58px)/.95 var(--mono); text-transform: uppercase; letter-spacing: 0; }
-    .intro-copy { color: var(--muted); margin: 12px 0 0; font-size: 13px; }
-    .stats { display: flex; gap: 26px; padding-bottom: 4px; }
-    .stat { min-width: 82px; padding-left: 14px; border-left: 1px solid var(--line); }
-    .stat-value { display: block; font: 700 29px/.95 var(--mono); }
-    .stat-label { display: block; color: var(--muted); font-size: 10px; text-transform: uppercase; letter-spacing: 1px; margin-top: 6px; }
-    .layout { display: grid; grid-template-columns: minmax(270px, 330px) minmax(0, 1fr); gap: 18px; align-items: start; }
-    .column { display: grid; gap: 18px; }
-    .panel { background: rgba(26,33,26,.94); border: 1px solid var(--line); border-radius: 6px; overflow: hidden; animation: rise .45s ease both; }
+    .topbar-right { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+    .data-status { display: flex; align-items: center; gap: 8px; color: var(--muted); font-size: 11px; text-align: right; }
+    .data-status.error { color: var(--coral); }
+    .live-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--lime); box-shadow: 0 0 12px rgba(195,245,106,.55); flex-shrink: 0; }
+
+    /* Intro */
+    .intro { padding: 36px 0 26px; animation: rise .45s ease both; }
+    .eyebrow { color: var(--lime); font-size: 11px; font-weight: 700; letter-spacing: 1.8px; text-transform: uppercase; }
+    h1 { margin: 8px 0 0; font: 700 clamp(38px, 5vw, 56px)/.95 var(--mono); text-transform: uppercase; }
+    .intro-copy { margin: 12px 0 0; color: var(--muted); font-size: 13px; }
+
+    /* 4 Kartu Statistik (Sesuai Referensi Penonton) */
+    .league-stats { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; margin-bottom: 20px; }
+    .stat-card { min-height: 84px; padding: 15px 17px; background: rgba(26,33,26,.94); border: 1px solid var(--line); border-radius: 6px; }
+    .stat-value { display: block; color: var(--lime); font: 700 29px/.95 var(--mono); font-variant-numeric: tabular-nums; }
+    .stat-label { display: block; margin-top: 8px; color: var(--muted); font-size: 10px; letter-spacing: 1px; text-transform: uppercase; }
+
+    /* Layout Grid */
+    .layout { display: grid; grid-template-columns: 1fr; gap: 18px; align-items: start; }
+    body.is-admin .layout { grid-template-columns: minmax(270px, 330px) minmax(0, 1fr); }
+    .column, .content { display: grid; gap: 18px; }
+
+    /* Panel */
+    .panel { overflow: hidden; background: rgba(26,33,26,.94); border: 1px solid var(--line); border-radius: 6px; animation: rise .45s ease both; }
     .panel-head { min-height: 62px; display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 15px 18px; border-bottom: 1px solid var(--line); }
-    .panel-title { margin: 0; font: 700 20px/1 var(--mono); text-transform: uppercase; letter-spacing: 0; }
-    .panel-subtitle { color: var(--muted); font-size: 11px; margin-top: 5px; }
+    .panel-title { margin: 0; font: 700 20px/1 var(--mono); text-transform: uppercase; }
+    .panel-subtitle { margin-top: 5px; color: var(--muted); font-size: 11px; }
     .panel-body { padding: 18px; }
+
+    /* Form & Tombol */
     .field-label { display: block; color: var(--muted); font-size: 10px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 7px; }
     .text-input, .score-input, .select-input { width: 100%; color: var(--ink); background: #111711; border: 1px solid #3a4438; border-radius: 4px; outline: none; transition: border-color .16s, box-shadow .16s; }
     .text-input { height: 40px; padding: 0 11px; }
-    .score-input { width: 48px; height: 38px; padding: 0; text-align: center; font: 700 20px var(--mono); }
-    .select-input { height: 36px; width: auto; min-width: 118px; padding: 0 30px 0 10px; font-size: 12px; }
+    .score-input { width: 46px; height: 36px; padding: 0; text-align: center; font: 700 19px var(--mono); }
+    .select-input { height: 36px; width: auto; min-width: 135px; padding: 0 30px 0 10px; font-size: 12px; }
     .text-input:focus, .score-input:focus, .select-input:focus { border-color: var(--lime); box-shadow: 0 0 0 2px rgba(195,245,106,.12); }
     .form-row { display: flex; gap: 8px; }
     .form-row .text-input { min-width: 0; flex: 1; }
@@ -82,6 +99,8 @@
     .button-danger-outline { min-height: 34px; padding: 0 10px; color: var(--coral); background: transparent; border: 1px solid rgba(255,118,94,.4); font-size: 11px; }
     .button-danger-outline:hover { border-color: var(--coral); background: rgba(255,118,94,.08); }
     .button-danger { color: var(--coral); background: transparent; border: 0; font-size: 11px; padding: 7px 4px; }
+
+    /* Daftar Tim Admin */
     .team-list { display: grid; gap: 7px; margin: 16px 0 0; padding: 0; list-style: none; }
     .team-item { display: flex; justify-content: space-between; align-items: center; gap: 12px; min-height: 38px; padding: 6px 9px; background: rgba(255,255,255,.025); border: 1px solid rgba(255,255,255,.045); border-radius: 4px; }
     .team-name { min-width: 0; overflow-wrap: anywhere; font-weight: 600; }
@@ -91,47 +110,62 @@
     .check-row input { accent-color: var(--lime); margin: 2px 0 0; }
     .helper { color: var(--muted); font-size: 11px; line-height: 1.5; margin: 12px 0 0; }
     .notice { margin-top: 10px; min-height: 17px; color: var(--coral); font-size: 11px; }
+    .empty-inline { color: var(--muted); padding: 19px 16px; font-size: 12px; line-height: 1.5; }
+
+    /* Tabel Klasemen (Lengkap dengan GM & GK) */
     .standings-wrap { overflow-x: auto; }
     .standings { width: 100%; border-collapse: collapse; white-space: nowrap; }
     .standings th { height: 38px; color: var(--muted); font-size: 9px; letter-spacing: .8px; text-align: right; text-transform: uppercase; border-bottom: 1px solid var(--line); }
-    .standings td { height: 44px; text-align: right; border-bottom: 1px solid rgba(255,255,255,.055); font-size: 12px; font-variant-numeric: tabular-nums; }
-    .standings th:first-child, .standings td:first-child, .standings th:nth-child(2), .standings td:nth-child(2) { text-align: left; }
+    .standings td { height: 44px; padding: 0 7px; border-bottom: 1px solid rgba(255,255,255,.055); font-size: 12px; font-variant-numeric: tabular-nums; text-align: right; }
+    .standings th:first-child, .standings td:first-child, .standings th:nth-child(2), .standings td:nth-child(2), .standings th:last-child, .standings td:last-child { text-align: left; }
     .standings th:first-child, .standings td:first-child { padding-left: 16px; }
     .standings th:last-child, .standings td:last-child { padding-right: 16px; }
-    .standings td:nth-child(2) { max-width: 180px; overflow: hidden; text-overflow: ellipsis; font-weight: 600; }
-    .standings th:last-child, .standings td:last-child { text-align: left; }
+    .standings td:nth-child(2) { max-width: 240px; overflow: hidden; text-overflow: ellipsis; font-weight: 600; }
     .standings tbody tr:last-child td { border-bottom: 0; }
-    .rank { color: var(--muted); width: 38px; font: 600 13px var(--mono); }
-    .rank.top { color: var(--lime); }
-    .points { color: var(--lime); font-weight: 700; }
-    .form-results { display: flex; flex-wrap: wrap; align-items: center; gap: 4px; width: 160px; min-width: 105px; }
+    .rank { width: 38px; color: var(--muted); font: 600 13px var(--mono); }
+    .rank.top, .points { color: var(--lime); }
+    .points { font-weight: 700; }
+    .form-results { display: flex; flex-wrap: nowrap; align-items: center; gap: 4px; min-width: 105px; }
     .form-badge { width: 17px; height: 17px; display: inline-grid; flex: 0 0 17px; place-items: center; border-radius: 50%; font-size: 11px; font-weight: 700; }
     .form-win { color: #102015; background: #35c879; }
     .form-draw { color: #fff; background: #68716b; }
     .form-loss { color: #fff; background: #ef5c50; }
     .form-empty { color: var(--muted); }
     .table-foot { display: flex; justify-content: space-between; gap: 12px; padding: 11px 16px; color: var(--muted); border-top: 1px solid var(--line); font-size: 10px; }
-    .fixture-toolbar { display: flex; align-items: center; justify-content: flex-end; flex-wrap: wrap; gap: 8px; }
+
+    /* Jadwal Pertandingan (Grid Kartu Penonton + Form Input Admin) */
+    .fixture-toolbar { display: flex; align-items: center; flex-wrap: wrap; gap: 8px; }
     .fixture-list { display: grid; }
+    .round-block + .round-block { border-top: 1px solid var(--line); }
     .round-heading { display: flex; justify-content: space-between; align-items: center; padding: 11px 18px; color: var(--lime); background: rgba(195,245,106,.045); border-bottom: 1px solid var(--line); font: 700 14px var(--mono); text-transform: uppercase; }
     .round-heading small { color: var(--muted); font: 500 10px var(--body); text-transform: none; }
-    .fixture { min-height: 79px; display: grid; grid-template-columns: minmax(100px,1fr) 150px minmax(100px,1fr) 95px; gap: 12px; align-items: center; padding: 11px 18px; border-bottom: 1px solid rgba(255,255,255,.055); }
-    .fixture:last-child { border-bottom: 0; }
-    .fixture-team { min-width: 0; font-size: 12px; font-weight: 600; overflow-wrap: anywhere; }
+
+    /* Kartu Penonton (Persis Referensi) */
+    .fixture-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 10px; padding: 12px; }
+    .fixture-card { min-height: 88px; display: grid; grid-template-columns: minmax(0,1fr) 58px minmax(0,1fr); gap: 8px; align-items: center; padding: 12px; background: rgba(255,255,255,.025); border: 1px solid rgba(255,255,255,.07); border-radius: 5px; }
+    .fixture-card.played { background: rgba(195,245,106,.075); border-color: rgba(195,245,106,.34); box-shadow: inset 3px 0 0 rgba(195,245,106,.65); }
+    .fixture-side { min-width: 0; }
+    .fixture-side.away { text-align: right; }
+    .fixture-role { display: block; margin-bottom: 5px; color: var(--muted); font-size: 8px; font-weight: 700; letter-spacing: .8px; text-transform: uppercase; }
+    .fixture-team { display: block; min-width: 0; font-size: 12px; font-weight: 600; line-height: 1.35; overflow-wrap: anywhere; }
     .fixture-team.away { text-align: right; }
+    .score-box { display: flex; min-height: 34px; align-items: center; justify-content: center; gap: 5px; color: var(--ink); background: #111711; border: 1px solid #394336; border-radius: 4px; font: 700 20px var(--mono); font-variant-numeric: tabular-nums; }
+    .fixture-card.played .score-box { color: var(--lime); background: rgba(195,245,106,.1); border-color: rgba(195,245,106,.38); }
+    .score-box.unplayed { color: #788174; font-size: 11px; }
+
+    /* Baris Input Skor Admin */
+    .admin-fixture { min-height: 76px; display: grid; grid-template-columns: minmax(100px,1fr) 140px minmax(100px,1fr) 95px; gap: 12px; align-items: center; padding: 11px 18px; border-bottom: 1px solid rgba(255,255,255,.055); }
+    .admin-fixture:last-child { border-bottom: 0; }
     .score-entry { display: flex; align-items: center; justify-content: center; gap: 8px; }
     .score-separator { color: var(--muted); font: 600 17px var(--mono); }
-    .score-display { font: 700 22px var(--mono); font-variant-numeric: tabular-nums; }
-    .versus { color: #788174; font: 700 11px var(--mono); }
+    .score-display { font: 700 22px var(--mono); font-variant-numeric: tabular-nums; color: var(--lime); }
     .fixture-action { display: flex; justify-content: flex-end; }
     .save-score { min-height: 32px; padding: 0 10px; color: var(--ink); background: #303a2e; border: 1px solid #46513f; border-radius: 4px; font-size: 10px; font-weight: 700; }
     .save-score:hover { color: var(--lime); border-color: var(--lime); }
-    .played-label { color: var(--lime); font-size: 10px; text-transform: uppercase; letter-spacing: .7px; font-weight: 700; }
-    .empty-state { padding: 36px 20px; text-align: center; }
-    .empty-mark { width: 40px; height: 40px; display: grid; place-items: center; margin: 0 auto 12px; border: 1px solid #485242; color: var(--lime); font: 700 20px var(--mono); transform: skew(-6deg); }
+
+    .empty-state { padding: 34px 20px; text-align: center; }
     .empty-state h3 { margin: 0; font: 700 20px var(--mono); text-transform: uppercase; }
-    .empty-state p { max-width: 280px; margin: 7px auto 0; color: var(--muted); font-size: 12px; line-height: 1.5; }
-    .empty-inline { color: var(--muted); padding: 19px 16px; font-size: 12px; line-height: 1.5; }
+    .empty-state p { max-width: 520px; margin: 7px auto 0; color: var(--muted); font-size: 12px; line-height: 1.6; }
     .footer-note { padding-top: 17px; color: #717a70; text-align: center; font-size: 10px; }
     .toast { position: fixed; right: 24px; bottom: 24px; z-index: 3; max-width: calc(100vw - 32px); padding: 12px 16px; border: 1px solid #57644d; border-left: 3px solid var(--lime); border-radius: 4px; color: var(--ink); background: #202820; box-shadow: 0 12px 32px rgba(0,0,0,.3); font-size: 12px; animation: rise .2s ease both; }
     .hidden { display: none !important; }
@@ -169,37 +203,32 @@
     }
 
     @media (max-width: 900px) {
-      .shell { padding: 0 24px 42px; }
-      .layout { grid-template-columns: minmax(230px, .75fr) minmax(0, 1.5fr); gap: 13px; }
-      .column { gap: 13px; }
-      .fixture { grid-template-columns: minmax(76px,1fr) 130px minmax(76px,1fr) 82px; gap: 7px; padding: 11px 12px; }
-      .score-input { width: 42px; }
-      .panel-body { padding: 15px; }
+      body.is-admin .shell { padding: 0 24px 42px; }
+      body.is-admin .layout { grid-template-columns: minmax(230px, .75fr) minmax(0, 1.5fr); gap: 13px; }
+      .admin-fixture { grid-template-columns: minmax(76px,1fr) 120px minmax(76px,1fr) 82px; gap: 7px; padding: 11px 12px; }
+      .score-input { width: 40px; }
     }
     @media (max-width: 680px) {
-      .shell { padding: 0 15px 32px; }
+      .shell, body.is-admin .shell { padding: 0 14px 30px; }
+      .topbar { min-height: 62px; }
       .brand-mark { width: 30px; height: 30px; }
-      .save-status { display: none; }
-      .save-controls { gap: 5px; }
-      .save-controls .button { min-height: 32px; padding: 0 8px; font-size: 10px; white-space: nowrap; }
-      .tournament-select { min-width: 140px; font-size: 12px; height: 32px; }
-      .intro { align-items: flex-start; flex-direction: column; padding: 28px 0 20px; gap: 20px; }
-      h1 { font-size: 44px; }
-      .stats { width: 100%; justify-content: flex-start; gap: 18px; }
-      .stat { min-width: 74px; }
+      .tournament-select { min-width: 145px; font-size: 12px; height: 32px; }
+      .intro { padding: 27px 0 20px; }
+      .league-stats { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; margin-bottom: 15px; }
+      .stat-card { min-height: 72px; padding: 12px; }
       .stat-value { font-size: 25px; }
-      .layout { grid-template-columns: 1fr; }
-      .fixture { grid-template-columns: minmax(0,1fr) 116px minmax(0,1fr); gap: 5px; padding: 12px 11px; }
-      .fixture-team { font-size: 11px; }
-      .fixture-action { grid-column: 2; justify-content: center; margin-top: -3px; }
-      .score-entry { gap: 5px; }
-      .score-input { width: 36px; height: 34px; }
+      body.is-admin .layout { grid-template-columns: 1fr; }
       .panel-head { padding: 13px 14px; }
       .panel[aria-labelledby="fixtures-title"] .panel-head { align-items: flex-start; flex-direction: column; }
-      .panel[aria-labelledby="fixtures-title"] .fixture-toolbar { justify-content: flex-start; }
-      .panel-body { padding: 14px; }
-      .standings th:first-child, .standings td:first-child { padding-left: 11px; }
-      .standings th:last-child, .standings td:last-child { padding-right: 11px; }
+      .standings th:first-child, .standings td:first-child { padding-left: 10px; }
+      .standings th:last-child, .standings td:last-child { padding-right: 10px; }
+      .standings td { padding-right: 5px; padding-left: 5px; }
+      .fixture-grid { grid-template-columns: 1fr; gap: 8px; padding: 10px; }
+      .fixture-card { grid-template-columns: minmax(0,1fr) 58px minmax(0,1fr); gap: 7px; padding: 11px; }
+      .admin-fixture { grid-template-columns: minmax(0,1fr) 110px minmax(0,1fr); gap: 5px; padding: 12px 11px; }
+      .fixture-action { grid-column: 2; justify-content: center; margin-top: -3px; }
+      .score-input { width: 36px; height: 34px; }
+      .table-foot { font-size: 9px; }
     }
     @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; } }
   </style>
@@ -207,42 +236,49 @@
 <body>
   <div class="shell">
     <header class="topbar">
-      <a class="brand" href="#" aria-label="FC 26 Liga Manager">
+      <a class="brand" href="#" aria-label="Klasemen dan jadwal Liga">
         <span class="brand-mark">26</span>
-        <span class="brand-name">Matchday<small>FC 26 LIGA MANAGER</small></span>
+        <span class="brand-name">Matchday<small id="brand-caption">FC 26 LIGA</small></span>
       </a>
 
-      <!-- Pemilih Turnamen -->
+      <!-- Dropdown Pemilih Turnamen (Tampil untuk Penonton & Admin) -->
       <div class="tournament-switcher">
         <select class="tournament-select" id="tournament-selector" aria-label="Pilih Turnamen"></select>
         <button class="button button-primary hidden" id="new-tournament-btn" type="button" style="min-height:34px; padding:0 12px; font-size:11px;">+ Turnamen Baru</button>
         <button class="button button-danger-outline hidden" id="delete-tournament-btn" type="button" title="Hapus turnamen aktif ini">Hapus</button>
       </div>
 
-      <div class="save-controls">
-        <span class="save-status"><span class="live-dot"></span><span>Menghubungkan...</span></span>
-        <button class="button button-secondary" id="save-now" type="button" title="Unduh file backup liga">Backup</button>
-        <button class="button button-secondary" id="load-backup" type="button" title="Pulihkan data dari file backup">Pulihkan</button>
-        <button class="button button-secondary" id="print-report-button" type="button" title="Cetak laporan atau simpan sebagai PDF">Cetak / PDF</button>
-        <input id="backup-file" type="file" accept=".json,application/json" hidden>
+      <div class="topbar-right">
+        <div class="data-status" id="data-status" role="status" aria-live="polite">
+          <span class="live-dot"></span>
+          <span id="status-text">Memuat data liga...</span>
+        </div>
+        <div class="admin-tools hidden" id="admin-tools" style="display:flex; gap:6px;">
+          <button class="button button-secondary" id="save-now" type="button" title="Unduh file backup liga">Backup</button>
+          <button class="button button-secondary" id="load-backup" type="button" title="Pulihkan data dari file backup">Pulihkan</button>
+          <button class="button button-secondary" id="print-report-button" type="button" title="Cetak laporan atau simpan sebagai PDF">Cetak / PDF</button>
+          <input id="backup-file" type="file" accept=".json,application/json" hidden>
+        </div>
       </div>
     </header>
 
     <section class="intro" aria-labelledby="page-title">
-      <div>
-        <div class="eyebrow">Liga Online · Multi-Turnamen</div>
-        <h1 id="page-title">Liga dimulai<br>di sini.</h1>
-        <p class="intro-copy" id="league-caption">Bikin jadwal. Mainkan matchday. Kejar puncak klasemen.</p>
-      </div>
-      <div class="stats" aria-label="Ringkasan liga">
-        <div class="stat"><span class="stat-value" id="stat-teams">0</span><span class="stat-label">Tim</span></div>
-        <div class="stat"><span class="stat-value" id="stat-played">0</span><span class="stat-label">Dimainkan</span></div>
-        <div class="stat"><span class="stat-value" id="stat-total">0</span><span class="stat-label">Total laga</span></div>
-      </div>
+      <div class="eyebrow" id="page-eyebrow">Informasi liga</div>
+      <h1 id="page-title">Klasemen &amp; Jadwal</h1>
+      <p class="intro-copy" id="league-caption">Data liga diperbarui secara langsung (real-time).</p>
+    </section>
+
+    <!-- 4 Kartu Statistik Utama -->
+    <section class="league-stats" aria-label="Ringkasan liga">
+      <div class="stat-card"><span class="stat-value" id="stat-teams">—</span><span class="stat-label">Jumlah tim</span></div>
+      <div class="stat-card"><span class="stat-value" id="stat-played">—</span><span class="stat-label">Sudah dimainkan</span></div>
+      <div class="stat-card"><span class="stat-value" id="stat-total">—</span><span class="stat-label">Total laga</span></div>
+      <div class="stat-card"><span class="stat-value" id="stat-pending">—</span><span class="stat-label">Belum dimainkan</span></div>
     </section>
 
     <main class="layout">
-      <aside class="column">
+      <!-- Panel Kontrol Khusus Admin -->
+      <aside class="column hidden" id="admin-sidebar">
         <section class="panel" aria-labelledby="setup-title">
           <div class="panel-head">
             <div><h2 class="panel-title" id="setup-title">Atur Turnamen</h2><div class="panel-subtitle">Siapkan nama dan peserta</div></div>
@@ -275,7 +311,8 @@
         </section>
       </aside>
 
-      <div class="column">
+      <!-- Konten Utama (Klasemen & Jadwal) -->
+      <div class="content">
         <section class="panel" aria-labelledby="standings-title">
           <div class="panel-head">
             <div><h2 class="panel-title" id="standings-title">Klasemen</h2><div class="panel-subtitle">Poin · selisih gol · gol memasukkan</div></div>
@@ -287,18 +324,25 @@
 
         <section class="panel" aria-labelledby="fixtures-title">
           <div class="panel-head">
-            <div><h2 class="panel-title" id="fixtures-title">Jadwal Pertandingan</h2><div class="panel-subtitle" id="fixture-summary">Skor pertandingan dicatat di sini</div></div>
+            <div><h2 class="panel-title" id="fixtures-title">Jadwal Pertandingan</h2><div class="panel-subtitle" id="fixture-summary">Memuat jadwal...</div></div>
             <div class="fixture-toolbar">
-              <label class="field-label" for="round-filter" style="margin:0">Pekan</label><select class="select-input" id="round-filter" aria-label="Filter pekan"><option value="all">Semua</option></select>
-              <label class="field-label" for="match-status-filter" style="margin:0">Status</label><select class="select-input" id="match-status-filter" aria-label="Filter status pertandingan"><option value="all">Semua status</option><option value="pending">Belum bertanding</option><option value="played">Sudah bertanding</option></select>
+              <label class="field-label" for="round-filter" style="margin:0">Pekan</label>
+              <select class="select-input" id="round-filter" aria-label="Filter pekan" style="min-width:110px;"><option value="all">Semua</option></select>
+              <label class="field-label" for="match-status-filter" style="margin:0">Status</label>
+              <select class="select-input" id="match-status-filter" aria-label="Filter status pertandingan">
+                <option value="all">Semua status</option>
+                <option value="pending">Belum bertanding</option>
+                <option value="played">Sudah bertanding</option>
+              </select>
             </div>
           </div>
           <div id="fixture-area"></div>
         </section>
       </div>
     </main>
-    <footer class="footer-note">Menghubungkan ke server...</footer>
+    <footer class="footer-note" id="footer-note">Halaman penonton · Klasemen dan skor diperbarui secara real-time</footer>
   </div>
+
   <section id="print-report" aria-label="Laporan liga untuk dicetak"></section>
   <div id="toast-region" aria-live="polite" aria-atomic="true"></div>
 
@@ -316,7 +360,7 @@
       appId: "1:769927016675:web:66213f67857522a677d5d6"
     };
 
-    // Kode rahasia untuk membuka mode admin lewat URL: ?admin=1234
+    // Kode PIN Admin di URL: ?admin=1234
     const ADMIN_PIN = "1234";
     const urlParams = new URLSearchParams(window.location.search);
     const isAdmin = urlParams.get("admin") === ADMIN_PIN;
@@ -337,17 +381,14 @@
     const escapeHTML = (value) => String(value).replace(/[&<>"']/g, (char) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[char]);
     const playedMatches = () => state.matches.filter((match) => Number.isInteger(match.homeScore) && Number.isInteger(match.awayScore));
 
-    if (!isAdmin) {
-      document.querySelector('aside.column').classList.add('hidden');
-      document.querySelector('.layout').style.gridTemplateColumns = '1fr';
-      byId('load-backup').classList.add('hidden');
-      document.querySelector('.save-status span:last-child').textContent = 'Live Klasemen';
-      document.querySelector('.footer-note').textContent = 'Klasemen dan skor diperbarui secara otomatis (real-time).';
-    } else {
+    if (isAdmin) {
+      document.body.classList.add('is-admin');
+      byId('admin-sidebar').classList.remove('hidden');
+      byId('admin-tools').classList.remove('hidden');
       byId('new-tournament-btn').classList.remove('hidden');
       byId('delete-tournament-btn').classList.remove('hidden');
-      document.querySelector('.save-status span:last-child').textContent = 'Mode Admin (Cloud)';
-      document.querySelector('.footer-note').textContent = 'Mode Admin aktif. Semua perubahan langsung tersimpan online.';
+      byId('page-eyebrow').textContent = 'Mode Admin · Kelola Turnamen';
+      byId('footer-note').textContent = 'Mode Admin aktif · Semua perubahan tersimpan otomatis ke server online.';
     }
 
     function normalizeState(raw) {
@@ -402,7 +443,6 @@
       render();
     }
 
-    // Dengarkan daftar semua turnamen secara real-time
     onValue(tournamentsRef, async (snapshot) => {
       const remoteList = snapshot.val();
       if (remoteList && typeof remoteList === 'object' && Object.keys(remoteList).length > 0) {
@@ -418,7 +458,6 @@
         isInitialized = true;
       } else if (!isInitialized) {
         isInitialized = true;
-        // Cek apakah ada data lama di 'liga-utama' untuk dipindahkan otomatis
         try {
           const legacySnap = await get(legacyLeagueRef);
           const legacyData = legacySnap.val();
@@ -447,17 +486,19 @@
         renderTournamentSelector();
         render();
       }
+      const timeStr = new Intl.DateTimeFormat('id-ID', { hour: '2-digit', minute: '2-digit' }).format(new Date());
+      byId('data-status').classList.remove('error');
+      byId('status-text').textContent = isAdmin ? `Admin Online · ${timeStr}` : `Live · Diperbarui ${timeStr}`;
     }, () => {
-      showToast('Gagal terhubung ke database online.');
+      byId('data-status').classList.add('error');
+      byId('status-text').textContent = 'Gagal terhubung ke server';
     });
 
-    // Pindah turnamen saat dropdown dipilih
     byId('tournament-selector').addEventListener('change', (event) => {
       const selectedId = event.target.value;
       if (selectedId) selectTournament(selectedId);
     });
 
-    // Buat turnamen baru (khusus Admin)
     byId('new-tournament-btn').addEventListener('click', () => {
       if (!isAdmin) return;
       const count = Object.keys(allTournaments).length + 1;
@@ -476,7 +517,6 @@
       showToast(`Turnamen "${cleanName}" dibuat`);
     });
 
-    // Hapus turnamen aktif (khusus Admin)
     byId('delete-tournament-btn').addEventListener('click', async () => {
       if (!isAdmin || !currentTournamentId) return;
       const ids = Object.keys(allTournaments);
@@ -611,15 +651,16 @@
       byId('team-form').querySelector('button').disabled = state.teams.length >= 20;
     }
 
+    // Tabel klasemen lengkap dengan kolom GM & GK seperti referensi penonton
     function renderStandings() {
       const rows = standings();
       byId('standing-count').textContent = rows.length;
       if (!rows.length) {
-        byId('standings-area').innerHTML = '<div class="empty-state"><div class="empty-mark">01</div><h3>Belum ada klasemen</h3><p>Menunggu admin menambahkan peserta turnamen ini.</p></div>';
+        byId('standings-area').innerHTML = '<div class="empty-state"><h3>Belum ada klasemen</h3><p>Belum ada tim di turnamen ini.</p></div>';
         return;
       }
-      byId('standings-area').innerHTML = `<table class="standings"><thead><tr><th>#</th><th>Tim</th><th>Main</th><th>M</th><th>S</th><th>K</th><th>SG</th><th>Poin</th><th>Semua Hasil</th></tr></thead><tbody>${rows.map((row, index) => `
-        <tr><td class="rank ${index === 0 && row.points > 0 ? 'top' : ''}">${String(index + 1).padStart(2, '0')}</td><td title="${escapeHTML(row.team)}">${escapeHTML(row.team)}</td><td>${row.played}</td><td>${row.wins}</td><td>${row.draws}</td><td>${row.losses}</td><td>${row.gf - row.ga > 0 ? '+' : ''}${row.gf - row.ga}</td><td class="points">${row.points}</td><td><div class="form-results" aria-label="Semua hasil pertandingan">${allResults(row.team).map((item) => `<span class="form-badge form-${item.result}" title="${item.label}" aria-label="${item.label}">${item.mark}</span>`).join('') || '<span class="form-empty">-</span>'}</div></td></tr>`).join('')}</tbody></table>`;
+      byId('standings-area').innerHTML = `<table class="standings"><thead><tr><th>#</th><th>Tim</th><th>Main</th><th>M</th><th>S</th><th>K</th><th>GM</th><th>GK</th><th>SG</th><th>Poin</th><th>Semua Hasil</th></tr></thead><tbody>${rows.map((row, index) => `
+        <tr><td class="rank ${index === 0 && row.points > 0 ? 'top' : ''}">${String(index + 1).padStart(2, '0')}</td><td title="${escapeHTML(row.team)}">${escapeHTML(row.team)}</td><td>${row.played}</td><td>${row.wins}</td><td>${row.draws}</td><td>${row.losses}</td><td>${row.gf}</td><td>${row.ga}</td><td>${row.gf - row.ga > 0 ? '+' : ''}${row.gf - row.ga}</td><td class="points">${row.points}</td><td><div class="form-results" aria-label="Semua hasil pertandingan">${allResults(row.team).map((item) => `<span class="form-badge form-${item.result}" title="${item.label}" aria-label="${item.label}">${item.mark}</span>`).join('') || '<span class="form-empty">-</span>'}</div></td></tr>`).join('')}</tbody></table>`;
     }
 
     function renderPrintReport() {
@@ -671,44 +712,46 @@
       const done = playedMatches().length;
       byId('fixture-summary').textContent = state.matches.length
         ? `${done} dari ${state.matches.length} pertandingan selesai`
-        : 'Skor pertandingan dicatat di sini';
+        : 'Belum ada jadwal pertandingan';
       const area = byId('fixture-area');
       if (!state.matches.length) {
-        area.innerHTML = `<div class="empty-state"><div class="empty-mark">VS</div><h3>Belum ada jadwal</h3><p>Menunggu admin membuat jadwal pertandingan.</p></div>`;
+        area.innerHTML = '<div class="empty-state"><h3>Belum ada jadwal</h3><p>Jadwal pertandingan belum tersedia.</p></div>';
         return;
       }
       const selectedRound = byId('round-filter').value;
       const selectedStatus = byId('match-status-filter').value;
-      const matches = state.matches.filter((match) => {
+      const matchesToShow = state.matches.filter((match) => {
         const matchesRound = selectedRound === 'all' || match.round === Number(selectedRound);
         const played = Number.isInteger(match.homeScore) && Number.isInteger(match.awayScore);
         const matchesStatus = selectedStatus === 'all' || (selectedStatus === 'played' ? played : !played);
         return matchesRound && matchesStatus;
       });
-      if (!matches.length) {
-        area.innerHTML = '<div class="empty-state"><div class="empty-mark">VS</div><h3>Tidak ada pertandingan</h3><p>Tidak ada pertandingan yang sesuai dengan filter ini.</p></div>';
+      if (!matchesToShow.length) {
+        area.innerHTML = '<div class="empty-state"><h3>Tidak ada pertandingan</h3><p>Tidak ada pertandingan yang sesuai dengan filter ini.</p></div>';
         return;
       }
-      const rounds = [...new Set(matches.map((match) => match.round))].sort((a, b) => a - b);
-      area.innerHTML = `<div class="fixture-list">${rounds.map((round) => {
-        const roundMatches = matches.filter((match) => match.round === round);
-        const completed = roundMatches.filter((match) => Number.isInteger(match.homeScore) && Number.isInteger(match.awayScore)).length;
-        return `<div class="round-heading"><span>Pekan ${round}</span><small>${completed}/${roundMatches.length} selesai</small></div>${roundMatches.map((match) => {
-          const played = Number.isInteger(match.homeScore) && Number.isInteger(match.awayScore);
-          
-          if (!isAdmin) {
-            return `<div class="fixture">
-              <div class="fixture-team">${escapeHTML(match.home)}</div>
-              <div class="score-entry">${played
-                ? `<span class="score-display">${match.homeScore}</span><span class="score-separator">:</span><span class="score-display">${match.awayScore}</span>`
-                : `<span class="versus">VS</span>`}
-              </div>
-              <div class="fixture-team away">${escapeHTML(match.away)}</div>
-              <div class="fixture-action">${played ? '<span class="played-label">Selesai</span>' : '<span class="versus">Terjadwal</span>'}</div>
-            </div>`;
-          }
+      const rounds = [...new Set(matchesToShow.map((match) => match.round))].sort((a, b) => a - b);
 
-          return `<form class="fixture score-form" data-match="${escapeHTML(match.id)}">
+      // TAMPILAN PENONTON: Grid Kartu Kandang / Tandang sesuai referensi
+      if (!isAdmin) {
+        area.innerHTML = `<div class="fixture-list">${rounds.map((round) => {
+          const matches = matchesToShow.filter((match) => match.round === round);
+          const completed = matches.filter((match) => Number.isInteger(match.homeScore) && Number.isInteger(match.awayScore)).length;
+          return `<section class="round-block" aria-label="Pekan ${round}"><div class="round-heading"><span>Pekan ${round}</span><small>${completed}/${matches.length} selesai</small></div><div class="fixture-grid">${matches.map((match) => {
+            const played = Number.isInteger(match.homeScore) && Number.isInteger(match.awayScore);
+            return `<article class="fixture-card ${played ? 'played' : ''}"><div class="fixture-side"><span class="fixture-role">Kandang</span><span class="fixture-team">${escapeHTML(match.home)}</span></div><div class="score-box ${played ? '' : 'unplayed'}">${played ? `${match.homeScore}<span>:</span>${match.awayScore}` : 'VS'}</div><div class="fixture-side away"><span class="fixture-role">Tandang</span><span class="fixture-team">${escapeHTML(match.away)}</span></div></article>`;
+          }).join('')}</div></section>`;
+        }).join('')}</div>`;
+        return;
+      }
+
+      // TAMPILAN ADMIN: Form Input Skor Langsung
+      area.innerHTML = `<div class="fixture-list">${rounds.map((round) => {
+        const roundMatches = matchesToShow.filter((match) => match.round === round);
+        const completed = roundMatches.filter((match) => Number.isInteger(match.homeScore) && Number.isInteger(match.awayScore)).length;
+        return `<div class="round-block"><div class="round-heading"><span>Pekan ${round}</span><small>${completed}/${roundMatches.length} selesai</small></div>${roundMatches.map((match) => {
+          const played = Number.isInteger(match.homeScore) && Number.isInteger(match.awayScore);
+          return `<form class="admin-fixture score-form" data-match="${escapeHTML(match.id)}">
             <div class="fixture-team">${escapeHTML(match.home)}</div>
             <div class="score-entry">${played
               ? `<span class="score-display">${match.homeScore}</span><span class="score-separator">:</span><span class="score-display">${match.awayScore}</span>`
@@ -717,20 +760,25 @@
             <div class="fixture-team away">${escapeHTML(match.away)}</div>
             <div class="fixture-action">${played ? `<button class="button-secondary edit-score" type="button" data-match="${escapeHTML(match.id)}">Ubah skor</button>` : '<button class="save-score" type="submit">Simpan skor</button>'}</div>
           </form>`;
-        }).join('')}`;
+        }).join('')}</div>`;
       }).join('')}</div>`;
     }
 
     function render() {
+      const completed = playedMatches().length;
       byId('league-name').value = state.leagueName || '';
       byId('double-round').checked = Boolean(state.doubleRound);
+
+      // Update 4 Kartu Statistik
       byId('stat-teams').textContent = state.teams.length;
-      byId('stat-played').textContent = playedMatches().length;
+      byId('stat-played').textContent = completed;
       byId('stat-total').textContent = state.matches.length;
-      byId('page-title').innerHTML = state.leagueName ? escapeHTML(state.leagueName) : 'Liga dimulai<br>di sini.';
-      byId('league-caption').textContent = state.leagueName
-        ? `Klasemen & jadwal resmi ${state.leagueName}.`
-        : 'Bikin jadwal. Mainkan matchday. Kejar puncak klasemen.';
+      byId('stat-pending').textContent = state.matches.length - completed;
+
+      byId('brand-caption').textContent = `${state.leagueName || 'FC 26 LIGA'}`.toLocaleUpperCase('id');
+      byId('page-title').textContent = state.leagueName || 'Klasemen & Jadwal';
+      byId('league-caption').textContent = `${state.leagueName || 'Liga FC 26'} · Informasi klasemen dan jadwal pertandingan.`;
+
       if (isAdmin) renderTeams();
       renderStandings();
       renderRoundFilter();
